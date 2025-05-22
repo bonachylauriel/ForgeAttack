@@ -3,7 +3,7 @@ telles que les injections SQL, les failles XSS, les inclusions de fichiers, les 
 
 ---
 
-🧰 Fonctionnalités principales du scanner
+🧰   Fonctionnalités principales du scanner
 
 - Crawling automatique : exploration des les pages du site pour identifier les liens et formulaires.
 - Détection de vulnérabilités :
