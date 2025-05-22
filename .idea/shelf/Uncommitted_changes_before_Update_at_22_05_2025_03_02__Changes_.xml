@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Update_at_22_05_2025_03_02_[Changes]" date="1747882961739" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_03_02_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/05/2025 03:02 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".venv/Scripts/sqlite3.dll" />
+    <option name="AFTER_PATH" value=".venv/Scripts/sqlite3.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_05_2025_03_02_[Changes]/sqlite3.dll" />
+  </binary>
+</changelist>

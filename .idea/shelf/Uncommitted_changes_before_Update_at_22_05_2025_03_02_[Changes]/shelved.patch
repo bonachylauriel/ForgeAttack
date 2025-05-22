@@ -1,0 +1,267 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision a10e0d82dfa46e3d10847020ee2f4787484d3399)
++++ b/main.py	(date 1747882383863)
+@@ -1,0 +1,27 @@
++
++from scanner import crawler, sqli_scanner, xss_scanner, lfi_scanner, header_checker, cms_detector, sensitive_files_checker
++from reports import report_generator
++def main():
++    target_url = input("Entrez l'URL cible : ")
++    urls = crawler.crawl(target_url)
++    vulnerabilities = []
++
++    for url in urls:
++        if sqli_scanner.scan(url):
++            vulnerabilities.append(f"Injection SQL détectée sur {url}")
++        if xss_scanner.scan(url):
++            vulnerabilities.append(f"XSS détecté sur {url}")
++        if lfi_scanner.scan(url):
++            vulnerabilities.append(f"Inclusion de fichier détectée sur {url}")
++            if sensitive_files_checker.scan(url):
++                vulnerabilities.append(f"Fichier sensible exposé sur {url}")
++        if header_checker.scan(target_url):
++            vulnerabilities.append(f"En-têtes HTTP mal configurés sur {target_url}")
++        cms = cms_detector.detect(target_url)
++        if cms:
++            vulnerabilities.append(f"CMS détecté : {cms}")
++
++        report_generator.generate_report(vulnerabilities)
++
++    if name == "main":
++        main()
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"794fe13b-f286-45fb-bf46-a5fa77e5643f\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 6\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2xQo1OP9Ex9HpcE2dkoi2amN9P7\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159\" />\r\n        <option value=\"bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"794fe13b-f286-45fb-bf46-a5fa77e5643f\" name=\"Changes\" comment=\"\" />\r\n      <created>1747879445630</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747879445630</updated>\r\n      <workItem from=\"1747879446653\" duration=\"8000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a10e0d82dfa46e3d10847020ee2f4787484d3399)
++++ b/.idea/workspace.xml	(date 1747882746388)
+@@ -1,16 +1,52 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="794fe13b-f286-45fb-bf46-a5fa77e5643f" name="Changes" comment="" />
++    <list default="true" id="794fe13b-f286-45fb-bf46-a5fa77e5643f" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/reports/report_generator.py" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/scanner/crawler.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/ForgeAttack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ForgeAttack.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.venv/Scripts/sqlite3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/Scripts/sqlite3.dll" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Python Script" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "bonachylauriel"
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/bonachylauriel/ForgeAttack.git",
++    "accountId": "dc526d38-71ca-4a6c-a396-8a90c4fd7086"
++  }
++}]]></component>
+   <component name="ProjectColorInfo"><![CDATA[{
+   "associatedIndex": 6
+ }]]></component>
+   <component name="ProjectId" id="2xQo1OP9Ex9HpcE2dkoi2amN9P7" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -19,8 +55,21 @@
+   "keyToString": {
+     "ModuleVcsDetector.initialDetectionPerformed": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "master",
++    "ignore.virus.scanning.warn.message": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "settings.sync",
+     "vue.rearranger.settings.migration": "true"
++  },
++  "keyToStringList": {
++    "ChangesTree.GroupingKeys": [
++      "directory",
++      "repository"
++    ]
+   }
+ }]]></component>
+   <component name="SharedIndexes">
+@@ -38,11 +87,22 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1747879445630</updated>
+-      <workItem from="1747879446653" duration="8000" />
++      <workItem from="1747879446653" duration="3098000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
+Index: reports/report_generator.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/reports/report_generator.py b/reports/report_generator.py
+new file mode 100644
+--- /dev/null	(date 1747881753441)
++++ b/reports/report_generator.py	(date 1747881753441)
+@@ -0,0 +1,18 @@
++from reportlab.lib.pagesizes import letter
++from reportlab.pdfgen import canvas
++
++def generate_report(vulnerabilities, filename='report.pdf'):
++    c = canvas.Canvas(filename, pagesize=letter)
++    width, height = letter
++    c.setFont("Helvetica", 12)
++    y = height - 40
++    c.drawString(30, y, "Rapport de vulnérabilités")
++    y -= 30
++    for vuln in vulnerabilities:
++        c.drawString(30, y, f"- {vuln}")
++        y -= 20
++        if y < 50:
++            c.showPage()
++            c.setFont("Helvetica", 12)
++            y = height - 40
++    c.save()
+Index: scanner/crawler.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/scanner/crawler.py b/scanner/crawler.py
+new file mode 100644
+--- /dev/null	(date 1747881600155)
++++ b/scanner/crawler.py	(date 1747881600155)
+@@ -0,0 +1,28 @@
++
++import requests
++from bs4 import BeautifulSoup
++from urllib.parse import urljoin
++
++def crawl(url):
++    visited = set()
++    to_visit = [url]
++    urls = []
++
++    while to_visit:
++        current_url = to_visit.pop()
++        if current_url in visited:
++            continue
++        visited.add(current_url)
++        try:
++            response = requests.get(current_url, timeout=5)
++            if response.status_code != 200:
++                continue
++            soup = BeautifulSoup(response.text, 'html.parser')
++            for link in soup.find_all('a', href=True):
++                absolute_url = urljoin(current_url, link['href'])
++                if absolute_url.startswith(url):
++                    to_visit.append(absolute_url)
++                    urls.append(absolute_url)
++        except requests.RequestException:
++            continue
++    return urls
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Black\">\r\n    <option name=\"sdkName\" value=\"Python 3.13 (ForgeAttack)\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision a10e0d82dfa46e3d10847020ee2f4787484d3399)
++++ b/.idea/misc.xml	(date 1747882294208)
+@@ -3,4 +3,5 @@
+   <component name="Black">
+     <option name="sdkName" value="Python 3.13 (ForgeAttack)" />
+   </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 virtualenv at C:\Users\hp\PycharmProjects\ForgeAttack\.venv" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/ForgeAttack.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/ForgeAttack.iml b/.idea/ForgeAttack.iml
+--- a/.idea/ForgeAttack.iml	(revision a10e0d82dfa46e3d10847020ee2f4787484d3399)
++++ b/.idea/ForgeAttack.iml	(date 1747882293715)
+@@ -1,8 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="PYTHON_MODULE" version="4">
+   <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.13 virtualenv at C:\Users\hp\PycharmProjects\ForgeAttack\.venv" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
+diff --git a/scanner/header_checker.py b/scanner/header_checker.py
+new file mode 100644
+diff --git a/scanner/sqli_scanner.py b/scanner/sqli_scanner.py
+new file mode 100644
+diff --git a/scanner/lfi_scanner.py b/scanner/lfi_scanner.py
+new file mode 100644
+diff --git a/utils/logger.py b/utils/logger.py
+new file mode 100644
+diff --git a/scanner/sensitive_files_checker.py b/scanner/sensitive_files_checker.py
+new file mode 100644
+diff --git a/scanner/cms_detector.py b/scanner/cms_detector.py
+new file mode 100644
