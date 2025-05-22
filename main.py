@@ -1,9 +1,13 @@
-
-from scanner import crawler, sqli_scanner, xss_scanner, lfi_scanner, header_checker, cms_detector, sensitive_files_checker
+from scanner import crawler, sqli_scanner, xss_scanner, lfi_scanner, header_checker, cms_detector, \
+    sensitive_files_checker
 from reports import report_generator
+
+
 def main():
     target_url = input("Entrez l'URL cible : ")
+    print(f"[+] URLs saisie:{target_url}")
     urls = crawler.crawl(target_url)
+    print(f"[+] URLs trouvées:{urls}")
     vulnerabilities = []
 
     for url in urls:
@@ -21,7 +25,7 @@ def main():
         if cms:
             vulnerabilities.append(f"CMS détecté : {cms}")
 
-      #  report_generator.generate_report(vulnerabilities)
+    report_generator.generate_report(vulnerabilities)
 
     if name == "main":
         main()

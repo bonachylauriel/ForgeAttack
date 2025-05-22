@@ -38,7 +38,9 @@ vuln_scanner/
 │   └── sensitive_files_checker.py
 ├── reports/
 │   └── report_generator.py
+|   |__ _init_.py
 ├── utils/
 │   └── logger.py
+|   |__ _init_.py
 ├── requirements.txt
 └── README.md
